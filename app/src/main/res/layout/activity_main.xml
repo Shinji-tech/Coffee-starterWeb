@@ -42,7 +42,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Lê Minh Thông"
+                    android:text="Phùng Thanh Độ"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -86,6 +86,34 @@ android:background="@drawable/brown_full_corner_bg"
                     android:background="@drawable/brown_full_corner_bg"
                     app:srcCompat="@drawable/settings" />
             </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/banner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="170dp"
+                    app:shapeAppearanceOverlay="@style/cornerImage"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarBanner"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/orange"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/banner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
