@@ -1,3 +1,3 @@
 package com.example.final_project.domain
 
-data class BannerModel()
+data class BannerModel(val url: String="")

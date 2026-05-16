@@ -1,4 +1,4 @@
-package com.example.final_project
+package com.example.final_project.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imageView.setOnClickListener {
+        binding.startBtn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
