@@ -1,19 +1,17 @@
 package com.example.final_project.activities
 
-import android.R
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.final_project.databinding.ActivityMainBinding
 import com.example.final_project.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +22,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBanner() {
-        binding.apply{
+        binding.apply {
             progressBarBanner.visibility = View.VISIBLE
-            viewModel.loadBanner().observeForever {
-                Glide.with(this@MainActivity)
-                    .load(it[0].url)
-                    .into(banner)
-                progressBarBanner.visibility = View.GONE
+            viewModel.loadBanner().observe(this@MainActivity) { list ->
+                if (list.isNotEmpty()) {
+                    Glide.with(this@MainActivity)
+                        .load(list[0].url)
+                        .into(banner)
+                    progressBarBanner.visibility = View.GONE
+
+                }
+                viewModel.loadBanner()
             }
-            viewModel.loadBanner()
         }
     }
-
 }
