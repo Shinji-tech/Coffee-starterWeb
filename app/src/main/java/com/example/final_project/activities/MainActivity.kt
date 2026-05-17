@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.final_project.adapters.CategoryAdapter
+import com.example.final_project.adapters.PopularAdapter
 import com.example.final_project.databinding.ActivityMainBinding
 import com.example.final_project.viewmodel.MainViewModel
 
@@ -22,6 +23,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initBanner()
         initCategory()
+        initPopular()
+    }
+
+    private fun initPopular() {
+        binding.apply {
+            progressBarPopular.visibility = View.VISIBLE
+            viewModel.loadPopular().observeForever {
+                popularView.layoutManager= LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                popularView.adapter = PopularAdapter(it)
+                progressBarPopular.visibility = View.GONE
+            }
+            viewModel.loadPopular()
+        }
     }
 
     private fun initCategory() {

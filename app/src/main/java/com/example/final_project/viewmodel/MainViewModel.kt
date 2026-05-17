@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.final_project.Repository.MainRepository
 import com.example.final_project.domain.BannerModel
 import com.example.final_project.domain.CategoryModel
+import com.example.final_project.domain.ItemModel
 
 class MainViewModel: ViewModel() {
     private val repository = MainRepository()
@@ -15,5 +16,8 @@ class MainViewModel: ViewModel() {
 
     fun loadCategory(): LiveData<MutableList<CategoryModel>> {
         return repository.loadCategory()
+    }
+    fun loadPopular(): LiveData<MutableList<ItemModel>> {
+        return repository.loadPopular()
     }
 }
